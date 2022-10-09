@@ -1,0 +1,49 @@
+*, *::before, ::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-image: linear-gradient(to top right, rgb(23, 138, 176), rgb(137, 179, 194));
+  font-family: 'Trebuchet MS', serif;
+}
+
+.container{
+  width: 450px;
+  height: 550px;
+  margin: 80px auto;
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgb(200, 225, 235);
+
+}
+
+.container h1{
+  font-weight: lighter;
+}
+
+.container h1 span{
+  font-weight: bold;
+}
+
+.container img{
+  width: 250px;
+}
+
+p{
+  font-size: 25px;
+}
+
+p.temp, span.temp{
+  font-weight: bolder;
+  font-size: 30px;
+}
