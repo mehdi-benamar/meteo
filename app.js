@@ -43,7 +43,7 @@ form.addEventListener("submit", async (e) => {
 
 async function getIpAdress(){
   
-    const response = await fetch(" https://api.bigdatacloud.net/data/client-ip ")
+    const response = await fetch("https://api.bigdatacloud.net/data/client-ip")
     const data = await response.json()
     return data  
 }
