@@ -57,7 +57,7 @@ async function getCity(){
     }
 
   }catch(e){
-    console.log("Échec de l'obtention des coordonnées locales")
+    error.textContent = "Échec de l'obtention des coordonnées locales"
   }
 }
 
