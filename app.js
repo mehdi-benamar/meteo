@@ -1,7 +1,3 @@
-// API à utiliser => http://ip-api.com/json/
-// api météo : https://api.openweathermap.org/data/2.5/weather?q=ville&appid=27e14d8a9c41f94dc2f512a282afb281&lang=fe&units=metric
-//permet de récupérer automatiquement la ville de l'utilisateur
-
 const svg = document.querySelector("#svg")
 const temperature = document.querySelector("#temperature")
 const city = document.querySelector("#city")
@@ -28,10 +24,27 @@ const svgWeather = {
   "Squall": "./assets/fog.svg"
 }
 
+const svgWeatherNight = {
+  "Clear": "./assets/night/clear-night.svg",
+  "Clouds": "./assets/night/cloudy-night.svg",
+  "Rain": "./assets/night/cloudy-night-rain.svg",
+  "Drizzle": "./assets/night/cloudy-night-drizzle.svg",
+  "Thunderstorm": "./assets/night/thunderstorms-night.svg",
+  "Snow": "./assets/night/cloudy-night-snow.svg",
+  "Fog": "./assets/night/cloudy-night-fog.svg",
+  "Mist": "./assets/night/cloudy-night-fog.svg",
+  "Smoke": "./assets/night/cloudy-night-fog.svg",
+  "Haze": "./assets/night/cloudy-night-fog.svg",
+  "Dust": "./assets/night/cloudy-night-fog.svg",
+  "Sand": "./assets/night/cloudy-night-fog.svg",
+  "Ash": "./assets/night/cloudy-night-fog.svg",
+  "Squall": "./assets/night/cloudy-night-fog.svg"
+}
+
 window.addEventListener("load", async () => {
   input.value = ""
-  const {name, main, weather} = await getDataLocalWeather()
-  displayHtml(name, weather, main)
+  const {name, main, weather, sys} = await getDataLocalWeather()
+  displayHtml(name, weather, main, sys)
 })
 
 form.addEventListener("submit", async (e) => {
@@ -85,9 +98,10 @@ async function researchCity(city){
 }
 
 
-function displayHtml(name, weather, main){
+function displayHtml(name, weather, main, sys){
+  const today = new Date().getTime()
   temperature.textContent = Math.round(main.temp) + "°"
   city.textContent = name
-  svg.src = svgWeather[weather[0].main]
+  svg.src = today >= (sys.sunset * 1000) || today < (sys.sunrise * 1000) ? svgWeatherNight[weather[0].main] : svgWeather[weather[0].main]
   minMax.textContent = `${Math.floor(main.temp_min)}°/${Math.ceil(main.temp_max)}°`
 }

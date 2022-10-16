@@ -73,11 +73,25 @@ p.temp, span.temp{
 }
 
 @media screen and (max-width: 768px){
+
+  body{
+    overflow: auto;
+  }
+
   .container{
     width: 90%;
+    margin-top: 25px;
   }
 
   .container h1{
     font-size: 25px
+  }
+
+  p{
+    font-size: 20px;
+  }
+
+  p.temp, span.temp{
+    font-size: 22px;
   }
 }
