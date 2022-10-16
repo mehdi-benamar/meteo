@@ -50,8 +50,8 @@ window.addEventListener("load", async () => {
 form.addEventListener("submit", async (e) => {
   e.preventDefault()
   error.textContent = ""
-  const {name, main, weather} = await researchCity(e.target.city.value)
-  displayHtml(name, weather, main)
+  const {name, main, weather, sys} = await researchCity(e.target.city.value)
+  displayHtml(name, weather, main, sys)
 })
 
 async function getIpAdress(){
